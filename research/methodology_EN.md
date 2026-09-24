@@ -2,7 +2,7 @@
 
 [中文](methodology.md) · [Home](../README_EN.md) · [Validation framework](validation-framework_EN.md)
 
-This method abstracts decisions from the [technical summary](../docs/TECHNICAL_SUMMARY_REVISED_v4.md) and [LookDev workflow](../docs/SKILL_optimized_v1.1.md). It is a decision process for Blender/Cycles, not a universal node graph or parameter preset.
+This method abstracts decisions from the [technical summary](../docs/TECHNICAL_SUMMARY.md) and [LookDev workflow](../docs/WORKFLOW.md). It is a decision process for Blender/Cycles, not a universal node graph or parameter preset.
 
 ```text
 Stylized Character Rendering

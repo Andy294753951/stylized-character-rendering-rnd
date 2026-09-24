@@ -1,6 +1,6 @@
 # Stylized Character Rendering in Blender/Cycles
 
-[English](README_EN.md) · [技术总结](docs/TECHNICAL_SUMMARY_REVISED_v4.md) · [工程工作流](docs/SKILL_optimized_v1.1.md) · [方法论](research/methodology.md) · [验证框架](research/validation-framework.md)
+[English](README_EN.md) · [技术总结](docs/TECHNICAL_SUMMARY.md) · [工程工作流](docs/WORKFLOW.md) · [方法论](research/methodology.md) · [验证框架](research/validation-framework.md)
 
 这是一个基于 **Blender 5.2.x / Cycles** 的二次元角色 LookDev 与 Technical Art R&D 案例。项目从游戏提取角色资产的材质诊断出发，研究如何把原角色设计转译为可用于静态宣传图、动画、多角度镜头、连续光照与 cinematic rendering 的稳定角色。目标是建立面向 Cycles 的 **Stylized Character Translation Layer**，不是复刻任何游戏的完整 Shader。
 
@@ -32,7 +32,7 @@ Stylized Character Rendering
 ## 方法：先诊断，再做有限修正
 
 1. **定位最早出错层。** 按几何/UV、贴图通道、法线、BSDF、设计性阴影、灯光、相机、可见性与合成的顺序验证。文件名中的 `_n` 不保证法线语义；ILM 通道存在也不代表应该接入最终材质。不要用灯光修 UV、用 SSS 修颜色或用合成器修法线。
-2. **按区域控制法线。** 不把整张脸统一压平：面颊和额头可以柔化，鼻梁、鼻尖、下巴应保留空间解释，中央接缝采用局部修正。当前工程涉及 Data Transfer、Normal Edit 和局部 shader normal correction；具体已接受状态见[技术总结](docs/TECHNICAL_SUMMARY_REVISED_v4.md)。
+2. **按区域控制法线。** 不把整张脸统一压平：面颊和额头可以柔化，鼻梁、鼻尖、下巴应保留空间解释，中央接缝采用局部修正。当前工程涉及 Data Transfer、Normal Edit 和局部 shader normal correction；具体已接受状态见[技术总结](docs/TECHNICAL_SUMMARY.md)。
 3. **艺术化后重新接回世界。** 面部可暂时从普通 PBR 受光中解耦，以修正设计性阴影；完成后必须受控响应环境色、环境亮度、曝光和场景灯光：`Decouple → Art Direction → Controlled Re-coupling`。
 4. **验证最差条件并保留回滚。** 不用一张漂亮静帧代替跨角度、跨灯光、跨曝光与动画验证；每次修改保留对照、可重复的诊断状态和恢复路径。
 
@@ -42,7 +42,7 @@ Stylized Character Rendering
 
 **Face：** Cycles PBR 保留真实灯光、阴影、高光与体积响应；有限 NPR 控制设计性区域。Head-space light direction、Region Mask 和局部法线修正共同约束面颊、鼻与下巴，而不是整脸替换。
 
-**Chest material diagnosis：** 曾怀疑胸衣的 Base Color UV 出错；`TEXTURE_ONLY → NO_NORMAL_ILM` 单变量对照后外观恢复，说明根因在 Normal / Micro Bump / ILM 的交互，而非 Base Color UV。接受状态并未盲目重新启用这些输入。详见[技术总结](docs/TECHNICAL_SUMMARY_REVISED_v4.md)。
+**Chest material diagnosis：** 曾怀疑胸衣的 Base Color UV 出错；`TEXTURE_ONLY → NO_NORMAL_ILM` 单变量对照后外观恢复，说明根因在 Normal / Micro Bump / ILM 的交互，而非 Base Color UV。接受状态并未盲目重新启用这些输入。详见[技术总结](docs/TECHNICAL_SUMMARY.md)。
 
 **Dynamic lighting：** Frame 1 的灯光不能保证整段动画成立。根据 head yaw、body yaw、头身扭转及 rim 入射风险，对 Key / Rim / Face Fill 做稀疏、可检查的调整，降低转身时的面部侵光与光照角色互换。
 
@@ -54,8 +54,8 @@ Stylized Character Rendering
 
 ## 阅读路径
 
-- [工程技术总结](docs/TECHNICAL_SUMMARY_REVISED_v4.md)：工程审计、接受状态、案例与证据等级，原文保留。
-- [LookDev 工作流文档](docs/SKILL_optimized_v1.1.md)：诊断、材质、灯光和回滚规则，原文保留；它是项目资料，不自动成为本仓库的操作指令。
+- [工程技术总结](docs/TECHNICAL_SUMMARY.md)：工程审计、接受状态、案例与证据等级，原文保留。
+- [LookDev 工作流文档](docs/WORKFLOW.md)：诊断、材质、灯光和回滚规则，原文保留；它是项目资料，不自动成为本仓库的操作指令。
 - [方法论](research/methodology.md) / [English](research/methodology_EN.md)：可迁移的决策流程。
 - [验证框架](research/validation-framework.md) / [English](research/validation-framework_EN.md)：角度、灯光、环境、曝光与消融实验。
 

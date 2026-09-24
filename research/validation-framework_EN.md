@@ -2,7 +2,7 @@
 
 [中文](validation-framework.md) · [Home](../README_EN.md) · [Methodology](methodology_EN.md)
 
-The objective is a character rendering system that survives its **weakest tested condition**. This is a proposed reproducible protocol; it does not claim that the original project completed every test in this matrix. The existing audit and output observations are documented in the [technical summary](../docs/TECHNICAL_SUMMARY_REVISED_v4.md).
+The objective is a character rendering system that survives its **weakest tested condition**. This is a proposed reproducible protocol; it does not claim that the original project completed every test in this matrix. The existing audit and output observations are documented in the [technical summary](../docs/TECHNICAL_SUMMARY.md).
 
 ## Baseline and records
 

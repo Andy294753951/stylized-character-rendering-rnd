@@ -1,6 +1,6 @@
 # Stylized Character Rendering in Blender/Cycles
 
-[中文](README.md) · [Technical summary](docs/TECHNICAL_SUMMARY_REVISED_v4.md) · [LookDev workflow](docs/SKILL_optimized_v1.1.md) · [Methodology](research/methodology_EN.md) · [Validation framework](research/validation-framework_EN.md)
+[中文](README.md) · [Technical summary](docs/TECHNICAL_SUMMARY.md) · [LookDev workflow](docs/WORKFLOW.md) · [Methodology](research/methodology_EN.md) · [Validation framework](research/validation-framework_EN.md)
 
 This is a **Blender 5.2.x / Cycles** technical-art R&D case study in anime character LookDev. Starting from diagnostic work on an imported game-character asset, it develops a stable rendering workflow for promotional stills, animation, multiple viewpoints, continuous lighting, and cinematic shots. The result is a **stylized character translation layer for Cycles**, not a recreation of any game's complete shader.
 
@@ -32,7 +32,7 @@ In shorthand, `PhysicalFreedom = f(region, material, light, view)`; pose and occ
 ## Working method
 
 1. **Diagnose the earliest failing layer.** Examine geometry and UVs, texture-channel semantics, normals, BSDF response, designed face shading, lights, camera, visibility, and compositing in causal order. A `_n` suffix does not verify normal-map semantics, and an ILM channel need not drive the final material. Lighting cannot repair UVs; SSS cannot repair source color; compositing cannot repair normals.
-2. **Control normals by region.** Soften cheek and forehead response where needed, preserve the nose and chin's spatial role, and correct center seams locally. The audited project uses Data Transfer, Normal Edit, and local shader-normal correction; the accepted configuration is recorded in the [technical summary](docs/TECHNICAL_SUMMARY_REVISED_v4.md).
+2. **Control normals by region.** Soften cheek and forehead response where needed, preserve the nose and chin's spatial role, and correct center seams locally. The audited project uses Data Transfer, Normal Edit, and local shader-normal correction; the accepted configuration is recorded in the [technical summary](docs/TECHNICAL_SUMMARY.md).
 3. **Reconnect artistic shading to the scene.** A face may be temporarily decoupled from ordinary PBR response to shape design-critical cues. It must then respond in a bounded way to environment hue, luminance, exposure, and scene lighting: `Decouple → Art Direction → Controlled Re-coupling`.
 4. **Test difficult conditions and preserve rollback.** A pleasing still is insufficient. Compare angles, light directions, environments, exposure, and animation while keeping reproducible A/B states and a recovery path.
 
@@ -42,7 +42,7 @@ See the [methodology](research/methodology_EN.md) and [validation framework](res
 
 **Face:** Cycles PBR remains responsible for scene lighting, shadowing, highlights, and volume. Bounded NPR controls selected design forms. Head-local light direction, region masks, and local normal correction constrain cheek, nose, and chin behavior without replacing the entire face response.
 
-**Chest material diagnosis:** An apparent Base Color UV problem was tested with `TEXTURE_ONLY → NO_NORMAL_ILM`. The appearance recovered, locating the fault in the interaction of normals, micro bump, and ILM rather than the Base Color UVs. The accepted state does not blindly re-enable those inputs; details are in the [technical summary](docs/TECHNICAL_SUMMARY_REVISED_v4.md).
+**Chest material diagnosis:** An apparent Base Color UV problem was tested with `TEXTURE_ONLY → NO_NORMAL_ILM`. The appearance recovered, locating the fault in the interaction of normals, micro bump, and ILM rather than the Base Color UVs. The accepted state does not blindly re-enable those inputs; details are in the [technical summary](docs/TECHNICAL_SUMMARY.md).
 
 **Animation-aware lighting:** A rig that succeeds on frame 1 may fail during a turn. Sparse, inspectable adjustments to key, rim, and face fill account for head yaw, body yaw, head/body twist, and frontal rim-incidence risk.
 
@@ -54,8 +54,8 @@ Discussion of publicly shown 《蓝色星原》 third-test footage is **visual i
 
 ## Repository guide
 
-- [Technical summary](docs/TECHNICAL_SUMMARY_REVISED_v4.md): audited project state, cases, and evidence classification; preserved verbatim.
-- [LookDev workflow](docs/SKILL_optimized_v1.1.md): diagnostic, material, lighting, and rollback guidance; preserved verbatim as project documentation, not automatically adopted as repository instructions.
+- [Technical summary](docs/TECHNICAL_SUMMARY.md): audited project state, cases, and evidence classification; preserved verbatim.
+- [LookDev workflow](docs/WORKFLOW.md): diagnostic, material, lighting, and rollback guidance; preserved verbatim as project documentation, not automatically adopted as repository instructions.
 - [Methodology](research/methodology_EN.md) / [中文](research/methodology.md): the transferable decision process.
 - [Validation framework](research/validation-framework_EN.md) / [中文](research/validation-framework.md): stress tests and ablations.
 

@@ -2,7 +2,7 @@
 
 [English](validation-framework_EN.md) · [项目首页](../README.md) · [方法论](methodology.md)
 
-目标是找出**最差条件下仍成立**的角色渲染方案。以下是后续可复现研究的测试协议，不表示这些矩阵已在原工程中全部完成。已发生的工程审计与成片观察见[技术总结](../docs/TECHNICAL_SUMMARY_REVISED_v4.md)。
+目标是找出**最差条件下仍成立**的角色渲染方案。以下是后续可复现研究的测试协议，不表示这些矩阵已在原工程中全部完成。已发生的工程审计与成片观察见[技术总结](../docs/TECHNICAL_SUMMARY.md)。
 
 ## 固定基准与记录
 

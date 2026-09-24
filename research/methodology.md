@@ -2,7 +2,7 @@
 
 [English](methodology_EN.md) · [项目首页](../README.md) · [验证框架](validation-framework.md)
 
-本方法从[工程技术总结](../docs/TECHNICAL_SUMMARY_REVISED_v4.md)与[LookDev 工作流文档](../docs/SKILL_optimized_v1.1.md)抽象而来。它指导 Blender/Cycles 中的决策，不将某个工程节点或参数宣称为通用配方。
+本方法从[工程技术总结](../docs/TECHNICAL_SUMMARY.md)与[LookDev 工作流文档](../docs/WORKFLOW.md)抽象而来。它指导 Blender/Cycles 中的决策，不将某个工程节点或参数宣称为通用配方。
 
 ```text
 Stylized Character Rendering
