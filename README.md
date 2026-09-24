@@ -1,6 +1,6 @@
 # Stylized Character Rendering in Blender/Cycles
 
-[English](README_EN.md) · [技术总结](docs/TECHNICAL_SUMMARY.md) · [工程工作流](docs/WORKFLOW.md) · [方法论](research/methodology.md) · [验证框架](research/validation-framework.md)
+[English](README_EN.md) · [技术总结](docs/TECHNICAL_SUMMARY.md) · [工程工作流](docs/WORKFLOW.md) · [方法论](research/methodology.md) · [验证框架](research/validation-framework.md) · [参考资料](REFERENCES.md) · [实验计划](experiments/README.md)
 
 这是一个基于 **Blender 5.2.x / Cycles** 的二次元角色 LookDev 与 Technical Art R&D 案例。项目从游戏提取角色资产的材质诊断出发，研究如何把原角色设计转译为可用于静态宣传图、动画、多角度镜头、连续光照与 cinematic rendering 的稳定角色。目标是建立面向 Cycles 的 **Stylized Character Translation Layer**，不是复刻任何游戏的完整 Shader。
 
@@ -13,6 +13,34 @@ Stylized Character Rendering
 ```
 
 真实光照负责体积、材质差异与环境响应；NPR / Art Direction 只保护身份关键线索。保护必须有边界：脸、头发和身体可以采用不同技术，却仍应像处在同一场景中。
+
+## Pipeline Overview
+
+先诊断，修改最早出错的层；之后才对身份关键线索做有限保护，并验证它仍能融入场景。
+
+```text
+Source Asset
+    ↓
+Geometry / UV Audit
+    ↓
+Texture Semantic Decode
+    ↓
+Normal / Tangent Validation
+    ↓
+Physical Material Base
+    ↓
+Bounded NPR / Identity Protection
+    ↓
+Environment Re-coupling
+    ↓
+Lighting / Camera
+    ↓
+Validation Matrix
+    ↓
+Final Stylized Character
+
+Physical Spatial Coherence + Bounded Identity Protection
+```
 
 ## 为什么采用 Hybrid NPR + PBR
 
@@ -58,6 +86,9 @@ Stylized Character Rendering
 - [LookDev 工作流文档](docs/WORKFLOW.md)：诊断、材质、灯光和回滚规则，原文保留；它是项目资料，不自动成为本仓库的操作指令。
 - [方法论](research/methodology.md) / [English](research/methodology_EN.md)：可迁移的决策流程。
 - [验证框架](research/validation-framework.md) / [English](research/validation-framework_EN.md)：角度、灯光、环境、曝光与消融实验。
+- [参考资料](REFERENCES.md)：一手公开技术来源及适用边界。
+- [实验计划](experiments/README.md)、[图片规范](figures/README.md)、[脚本规划](scripts/README.md)：未来可复现实验、原创图示与工具的目录约定；当前不代表已有结果或代码。
+- [变更记录](CHANGELOG.md)：关键认识与仓库结构的变化。
 
 ## 范围、权利与许可
 

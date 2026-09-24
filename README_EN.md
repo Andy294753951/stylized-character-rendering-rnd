@@ -1,6 +1,6 @@
 # Stylized Character Rendering in Blender/Cycles
 
-[中文](README.md) · [Technical summary](docs/TECHNICAL_SUMMARY.md) · [LookDev workflow](docs/WORKFLOW.md) · [Methodology](research/methodology_EN.md) · [Validation framework](research/validation-framework_EN.md)
+[中文](README.md) · [Technical summary](docs/TECHNICAL_SUMMARY.md) · [LookDev workflow](docs/WORKFLOW.md) · [Methodology](research/methodology_EN.md) · [Validation framework](research/validation-framework_EN.md) · [References](REFERENCES.md) · [Planned experiments](experiments/README.md)
 
 This is a **Blender 5.2.x / Cycles** technical-art R&D case study in anime character LookDev. Starting from diagnostic work on an imported game-character asset, it develops a stable rendering workflow for promotional stills, animation, multiple viewpoints, continuous lighting, and cinematic shots. The result is a **stylized character translation layer for Cycles**, not a recreation of any game's complete shader.
 
@@ -13,6 +13,34 @@ Stylized Character Rendering
 ```
 
 Physical lighting supplies volume, material distinction, and environmental response. NPR and art direction protect identity-critical cues within defined limits. Face, hair, and body can use different shading techniques as long as they still appear to inhabit the same scene.
+
+## Pipeline Overview
+
+Diagnose first and modify the earliest failing layer. Then protect only identity-critical cues within defined bounds and check that the result still belongs in the scene.
+
+```text
+Source Asset
+    ↓
+Geometry / UV Audit
+    ↓
+Texture Semantic Decode
+    ↓
+Normal / Tangent Validation
+    ↓
+Physical Material Base
+    ↓
+Bounded NPR / Identity Protection
+    ↓
+Environment Re-coupling
+    ↓
+Lighting / Camera
+    ↓
+Validation Matrix
+    ↓
+Final Stylized Character
+
+Physical Spatial Coherence + Bounded Identity Protection
+```
 
 ## Why hybrid NPR and PBR?
 
@@ -58,6 +86,9 @@ Discussion of publicly shown 《蓝色星原》 third-test footage is **visual i
 - [LookDev workflow](docs/WORKFLOW.md): diagnostic, material, lighting, and rollback guidance; preserved verbatim as project documentation, not automatically adopted as repository instructions.
 - [Methodology](research/methodology_EN.md) / [中文](research/methodology.md): the transferable decision process.
 - [Validation framework](research/validation-framework_EN.md) / [中文](research/validation-framework.md): stress tests and ablations.
+- [References](REFERENCES.md): primary public technical sources and the limits of what they support.
+- [Planned experiments](experiments/README.md), [figure policy](figures/README.md), and [future tools](scripts/README.md): conventions for reproducible tests, original diagrams, and scripts; these directories do not imply completed results or code.
+- [Changelog](CHANGELOG.md): major changes in interpretation and repository structure.
 
 ## Scope and rights
 
