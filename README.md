@@ -74,6 +74,8 @@ Physical Spatial Coherence + Bounded Identity Protection
 
 **Dynamic lighting：** Frame 1 的灯光不能保证整段动画成立。根据 head yaw、body yaw、头身扭转及 rim 入射风险，对 Key / Rim / Face Fill 做稀疏、可检查的调整，降低转身时的面部侵光与光照角色互换。
 
+**Jinshi 后续案例：** [责任分配案例笔记](docs/JINSHI_RESPONSIBILITY_CASE_STUDY.md)把问题从“给每个区域多少物理自由度”延伸到“每个视觉线索主要由谁负责、物理世界可改变它多少”。它记录了保护不足与过度保护的失败经验，并提出 **Redundant Volume Encoding** 检查；案例参数与观察仅属于提供的项目记录，尚未在本仓库独立复核。
+
 ## 已观察到什么，尚未证明什么
 
 技术总结记录了 `.blend` 数据块静态审计，并结合最终动画与静帧做结果级验证。成片中，正脸和多个 3/4 角度保留了角色身份，面颊较干净，鼻与下巴仍提供一定三维解释；头发、身体、金属保持不同的物理响应，未频繁观察到明显的 face-shadow flipping、rim intrusion 或 normal pop。这支持**当前角色与场景中的组合方案有效**，但不能单凭成片证明某个节点或算法是唯一原因。更严格的组件因果比较仍须进行受控 ablation。
@@ -82,8 +84,10 @@ Physical Spatial Coherence + Bounded Identity Protection
 
 ## 阅读路径
 
-- [工程技术总结](docs/TECHNICAL_SUMMARY.md)：工程审计、接受状态、案例与证据等级，原文保留。
-- [LookDev 工作流文档](docs/WORKFLOW.md)：诊断、材质、灯光和回滚规则，原文保留；它是项目资料，不自动成为本仓库的操作指令。
+- [工程技术总结](docs/TECHNICAL_SUMMARY.md)：米砂工程审计与接受状态；原有主体保留，末尾单列 Jinshi 后续说明。
+- [LookDev 工作流文档](docs/WORKFLOW.md)：原项目诊断、材质、灯光和回滚规则，并补充责任分配；它是项目资料，不自动成为本仓库的操作指令。
+- [Jinshi 后续案例](docs/JINSHI_RESPONSIBILITY_CASE_STUDY.md)：提供的案例笔记、负面结果与证据边界。
+- [仓库 Skill](skills/blender-anime-npr-pbr-lookdev/SKILL.md)：可复用的操作规则；仓库文件不会自动安装到个人 Codex 配置。
 - [方法论](research/methodology.md) / [English](research/methodology_EN.md)：可迁移的决策流程。
 - [验证框架](research/validation-framework.md) / [English](research/validation-framework_EN.md)：角度、灯光、环境、曝光与消融实验。
 - [参考资料](REFERENCES.md)：一手公开技术来源及适用边界。

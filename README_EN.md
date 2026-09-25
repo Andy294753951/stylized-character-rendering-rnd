@@ -74,6 +74,8 @@ See the [methodology](research/methodology_EN.md) and [validation framework](res
 
 **Animation-aware lighting:** A rig that succeeds on frame 1 may fail during a turn. Sparse, inspectable adjustments to key, rim, and face fill account for head yaw, body yaw, head/body twist, and frontal rim-incidence risk.
 
+**Jinshi follow-up:** The [responsibility-allocation case notes](docs/JINSHI_RESPONSIBILITY_CASE_STUDY.md) extend the question from “how much physical freedom does each region get?” to “who primarily owns each visual cue, and how much may physics change it?” They record failures from under-protection and over-protection and propose a **Redundant Volume Encoding** check. The case values and observations are supplied project notes, not independently audited evidence in this repository.
+
 ## Evidence and limits
 
 The source report combines static `.blend` datablock auditing with observation of final animation and stills. In that output, frontal and several three-quarter views preserve identity, cheeks remain relatively clean, and nose/chin retain spatial cues. Hair, body, and metal show distinct physical responses without frequent visible face-shadow flips, rim intrusion, or normal pops. This is **result-level support for the combined approach in this character and scene**. Rendered frames alone cannot isolate one node or algorithm as the unique cause; controlled ablations are still needed.
@@ -82,8 +84,10 @@ Discussion of publicly shown 《蓝色星原》 third-test footage is **visual i
 
 ## Repository guide
 
-- [Technical summary](docs/TECHNICAL_SUMMARY.md): audited project state, cases, and evidence classification; preserved verbatim.
-- [LookDev workflow](docs/WORKFLOW.md): diagnostic, material, lighting, and rollback guidance; preserved verbatim as project documentation, not automatically adopted as repository instructions.
+- [Technical summary](docs/TECHNICAL_SUMMARY.md): the original 米砂 audit and accepted state remain intact, with a separate Jinshi follow-up note at the end.
+- [LookDev workflow](docs/WORKFLOW.md): project diagnostic, material, lighting, and rollback rules, extended with responsibility allocation; project documentation, not automatically adopted as repository instructions.
+- [Jinshi follow-up](docs/JINSHI_RESPONSIBILITY_CASE_STUDY.md): supplied case notes, negative results, and evidence boundaries.
+- [Repository Skill](skills/blender-anime-npr-pbr-lookdev/SKILL.md): reusable operational rules; a repository file does not automatically install a personal Codex skill.
 - [Methodology](research/methodology_EN.md) / [中文](research/methodology.md): the transferable decision process.
 - [Validation framework](research/validation-framework_EN.md) / [中文](research/validation-framework.md): stress tests and ablations.
 - [References](REFERENCES.md): primary public technical sources and the limits of what they support.
