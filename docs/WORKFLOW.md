@@ -1,6 +1,6 @@
 ---
 name: blender-anime-npr-pbr-lookdev
-version: 1.1.0
+version: 1.2.0
 description: >-
   Audit, diagnose, stress-test, and safely refine Blender 5.2/Cycles anime-character projects using a hybrid NPR+PBR workflow. Use for the 米砂 final project or similar imported/game-character assets when working on face shading, bounded identity protection, skin, hair, eyes, sheer cloth, official packed texture channels, custom normals, animation lighting, cameras, environment adaptation, volumetrics, Geometry Nodes, compositor consistency, or reversible Blender Python automation.
 ---
@@ -344,6 +344,14 @@ The practical rule is:
 
 If a fix makes the front view cleaner but damages 3/4 structure, lowers temporal stability, or makes the face ignore scene lighting, reject it.
 
+### Shading responsibility allocation — Jinshi follow-up
+
+After locating the earliest wrong layer, ask **which subsystem should primarily own each visible cue**: silhouette/head direction, nose and cheek form, designed shadow boundary, environment tint, and edge separation. Record permitted secondary contributors and the identity envelope they must not exceed. See the separate [Jinshi case study](JINSHI_RESPONSIBILITY_CASE_STUDY.md); its numerical closeout is project-specific, not a preset for 米砂 or other characters.
+
+Flag **Redundant Volume Encoding** when geometry normals, regional normals, directional face response, designed shadow, and character lights all strongly restate the same nose, cheek, or eye-socket form. Test one layer at a time. Individually reasonable components can produce an unreasonable combined result.
+
+For a stable face that looks too modeled only in some 3/4 views, inspect hair occlusion/contact → Face Fill → Key → Rim → camera/view → face-material architecture. Preserve silhouette, nose, chin, and head orientation; do not flatten the entire face by default. This is a diagnostic order, not an assumption that lighting is always responsible.
+
 ---
 
 ## Face normal rules
@@ -684,6 +692,11 @@ PREFIX = "PROJECT_FEATURE_"
 - Do not rebuild an entire material when a single link/value is the problem.
 - Do not add a second modifier that duplicates an existing correction.
 - Before adding nodes, search by stable name/label.
+- After creating a material, validate assignment to the **exact intended slot** and check `target_material.users > 0`; a zero-user datablock is not an applied fix.
+- Inspect node `bl_idname`, socket types, directions, and links before mutation; a label does not prove that a node is a writable scalar control.
+- Do not multiply an already shaded RGBA result as though it were a contribution-strength parameter. Define and test a meaningful neutral reference before mixing.
+- Cache downstream node/socket references before removing a `NodeLink`; never dereference the removed link afterward.
+- Change one responsibility layer at a time unless testing its interaction with another layer is the explicit purpose.
 
 ---
 
@@ -769,6 +782,7 @@ Evaluate:
 - **Shading-domain coherence** — face/hair/body do not look like they belong to different lighting systems.
 - **Environment integration** — the character receives enough chromatic/luminance influence to belong to the scene.
 - **Material separation** — skin, hair, cloth, metal, and sheer fabric retain distinct response.
+- **Responsibility clarity** — each key form cue has a primary owner; several systems do not strongly and unintentionally re-encode the same volume.
 
 ### Recommended ablation sequence
 
@@ -780,9 +794,12 @@ B — Uniform face flatten
 C — Regional normal control
 D — Regional normal + designed face shadow
 E — D + environment adaptation
+F — E + character-specific Face Fill
+G — F + final Rim polish
 ```
 
 Only claim that a technique improves robustness when the controlled comparison supports it.
+Treat F and G as **planned extensions** for future controlled tests, not as completed tests in the original 米砂 audit.
 
 ---
 
