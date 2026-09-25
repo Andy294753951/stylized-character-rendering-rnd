@@ -20,9 +20,17 @@ Stylized Character Rendering
 6. **Stress-test the worst case.** Sample angles, light directions, environments, exposure, pose, and time. Compare controlled ablations under identical conditions. Ask whether the weakest frame still reads as the same character in the same world.
 7. **Preserve rollback and reproducibility.** Record inputs, material and lighting states, reasons for edits, A/B output, and failure cases. Keep the accepted baseline, duplicate risky states, and maintain a restore path so historical experiments cannot silently replace the active setup.
 
+## Follow-up method: Shading Responsibility Allocation
+
+The [Jinshi follow-up](../docs/JINSHI_RESPONSIBILITY_CASE_STUDY.md) adds an **operational diagnostic axis** without replacing `Physical Spatial Coherence + Bounded Identity Protection`. After finding the earliest failing layer, ask who should primarily own each visible cue and how much physical change it may tolerate.
+
+For nose shadow, cheek and eye-socket form, environment tint, and rim separation, record the **primary owner**, allowed physical freedom, protected identity envelope, and secondary contributors. Geometry carries silhouette; regional normals can suppress unwanted geometry response; designed face shading can shape identity-critical boundaries; PBR supplies material and spatial response; lights and environment support scene belonging. The exact allocation depends on the current asset and controlled tests.
+
+**Redundant Volume Encoding** is the risk that several systems strongly repeat the same nose, eye-socket, or cheek form cue. Each part may be reasonable by itself while the combined result over-models the face. Isolate one responsibility layer at a time before making the smallest useful change; a problem visible on the face does not automatically call for a face-material rewrite. Jinshi's numerical settings remain case-specific notes, not reusable defaults.
+
 ## Evidence discipline
 
-Classify claims as **engineering facts** (datablocks, nodes, scripts, settings), **output observations** (visible in the final render or animation), **public technical precedent** (general methods documented elsewhere), or **working hypotheses** (inferences about proprietary rendering). Final footage supports the combined result in this particular case; it does not identify one algorithm as its unique cause. Public frames cannot establish a game's internal shader architecture.
+Classify claims as **engineering facts** (datablocks, nodes, scripts, settings), **output observations** (visible in a render or animation), **public technical precedent** (general methods documented elsewhere), **methodological inference** (a case-derived principle still needing wider testing), or **working hypotheses** (inferences about proprietary rendering). Jinshi's engineering events are currently supplied case notes, not independently audited repository evidence. Final footage supports the combined result in a particular case; it does not identify one algorithm as its unique cause. Public frames cannot establish a game's internal shader architecture.
 
 ## Promotion criterion
 

@@ -6,7 +6,7 @@ Hold the asset, pose, camera, render settings, and unrelated material parameters
 
 | Directory | Planned sweep |
 | --- | --- |
-| `face-ablation/` | A: Pure PBR / geometry normals; B: Uniform Normal Flatten; C: Regional Normal Control; D: C + Designed Face Shading; E: D + Environment Adaptation. State which variants can actually be reproduced before comparing them. |
+| `face-ablation/` | A: Pure PBR / geometry normals; B: Uniform Normal Flatten; C: Regional Normal Control; D: C + Designed Face Shading; E: D + Environment Adaptation; F: E + character-specific Face Fill; G: F + final Rim polish. F/G extend the **planned** matrix after the [Jinshi case notes](../docs/JINSHI_RESPONSIBILITY_CASE_STUDY.md); state which variants can actually be reproduced before comparing them. |
 | `view-angle/` | 0°, 30°, 45°, 60°, 90°; test both left and right when asymmetry matters. |
 | `lighting/` | Front, side, top, back, rim, and mixed lighting. |
 | `environment/` | Neutral, warm, cyan/blue, green, red, dark, and bright environments. |

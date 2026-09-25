@@ -31,8 +31,10 @@
 | C | Regional Normal Control | 局部法线能否同时保留干净面颊和鼻/下巴体积？ |
 | D | C + Designed Face Shading | 设计性脸影是否改善身份与跨视角稳定性？ |
 | E | D + Environment Adaptation | 场景融合是否改善且不抹掉身份？ |
+| F | E + Character-specific Face Fill | 少量补光是否改善最差视角的可读性而不重塑面部？ |
+| G | F + Final Rim Polish | 边缘分离是否改善且没有 rim 侵入或脸身受光冲突？ |
 
-每个版本记录启用的节点、Modifier 和 mask。若 D 优于 C，只能将差异归于两版的受控变化；不应从最终图像推断某单一节点是唯一原因。
+F/G 是受 [Jinshi 后续案例](../docs/JINSHI_RESPONSIBILITY_CASE_STUDY.md)启发的**未来测试扩展**，不表示米砂或 Jinshi 已完成全部 A–G 矩阵。每个版本记录启用的节点、Modifier、mask 和灯光状态。若 D 优于 C，只能将差异归于两版的受控变化；不应从最终图像推断某单一节点是唯一原因。
 
 ## 评价指标
 
@@ -48,6 +50,9 @@
 | Worst-case Identity Preservation | 全矩阵最低分样本仍否可辨认 |
 | Exposure Robustness | EV +1/+2 下五官与低频结构是否保留 |
 | Environment Integration | 色彩与亮度有场景响应，同时未失去设计身份 |
+| Responsibility Clarity | 鼻、面颊、眼窝、环境染色和 rim 分离是否各有清楚的主要责任系统 |
+
+将 **Redundant Volume Encoding** 作为失败标志：若法线、设计性脸影和灯光等多个独立系统同时强烈塑造同一鼻/眼窝/面颊体积线索，记录相关系统并做逐层消融，不能只用平均分掩盖重复表达。
 
 至少报告每项**最低分**、对应条件与失败帧，再报告中位数；不要只挑最漂亮的一帧。若修正改善平均值却降低最差帧的身份或时序稳定性，应保留为实验，不直接推广。
 
@@ -65,4 +70,4 @@ Stylized face → reduced geometry-driven shading → low local contrast
 
 ## 报告结论的格式
 
-每项结论标注来源：**工程内事实 / 成片观察 / 公开技术先例 / 工作假说**。报告测试版本、条件、最差帧、负面结果与尚未覆盖的组合。只有受控 A/B 能支持组件层因果判断；成片可支持系统在当前案例中的整体结果。
+每项结论标注来源：**工程内事实 / 成片观察 / 公开技术先例 / 方法论推断 / 工作假说**。报告测试版本、条件、最差帧、负面结果与尚未覆盖的组合。只有受控 A/B 能支持组件层因果判断；成片可支持系统在当前案例中的整体结果。提供的 Jinshi 案例笔记需与独立复核的工程证据区分。

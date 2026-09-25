@@ -31,8 +31,10 @@ Use identical pose, camera, lighting, environment, and exposure for each version
 | C | Regional Normal Control | Can local normals clean cheeks and retain nose/chin volume? |
 | D | C + Designed Face Shading | Does designed shading improve identity and cross-view stability? |
 | E | D + Environment Adaptation | Does scene integration improve without erasing identity? |
+| F | E + Character-specific Face Fill | Does restrained fill improve worst-view readability without remodeling the face? |
+| G | F + Final Rim Polish | Does edge separation improve without rim intrusion or face/body lighting conflict? |
 
-Log active nodes, modifiers, and masks for every variant. A difference between D and C can be attributed only to the controlled change between those variants; a final image alone does not identify a single node as the unique cause.
+F/G are **future test extensions** motivated by the [Jinshi follow-up](../docs/JINSHI_RESPONSIBILITY_CASE_STUDY.md); neither the 米砂 nor Jinshi record claims the complete A–G matrix has been run. Log active nodes, modifiers, masks, and lights for every variant. A difference between D and C can be attributed only to the controlled change between those variants; a final image alone does not identify a single node as the unique cause.
 
 ## Evaluation
 
@@ -48,6 +50,9 @@ Score each criterion from **0 (fails) to 4 (stable)** and attach a crop and spec
 | Worst-case Identity Preservation | The lowest-scoring condition still reads as the intended character |
 | Exposure Robustness | Facial structure survives EV +1/+2 |
 | Environment Integration | Scene hue and luminance affect the character within identity-safe bounds |
+| Responsibility Clarity | Nose, cheek, eye-socket, environment tint, and rim separation each have a clear primary owner |
+
+Flag **Redundant Volume Encoding** when independent normal, designed-shadow, and lighting systems strongly repeat the same nose, eye-socket, or cheek form cue. Record the contributors and ablate them one layer at a time; do not let an average score hide duplicate form encoding.
 
 Report the **minimum score** for each criterion, its condition and frame, and then the median. Do not select only the most flattering frame. If a change raises the average but damages worst-case identity or temporal stability, keep it experimental rather than promoting it.
 
@@ -65,4 +70,4 @@ Stylized face → reduced geometry-driven shading → low local contrast
 
 ## Reporting claims
 
-Label each conclusion as an **engineering fact**, **output observation**, **public technical precedent**, or **working hypothesis**. Include test version, conditions, weakest frame, negative results, and untested combinations. Controlled A/B comparisons can support component-level causal claims; final footage supports the combined outcome in this particular case.
+Label each conclusion as an **engineering fact**, **output observation**, **public technical precedent**, **methodological inference**, or **working hypothesis**. Include test version, conditions, weakest frame, negative results, and untested combinations. Controlled A/B comparisons can support component-level causal claims; final footage supports the combined outcome in this particular case. Distinguish the supplied Jinshi case notes from independently audited project evidence.
