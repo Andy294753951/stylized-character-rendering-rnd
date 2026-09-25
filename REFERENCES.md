@@ -7,6 +7,8 @@ These are public technical sources for the concepts discussed in this repository
 - **Normal Map Node** — Blender Foundation, Blender 5.2 Manual. [Official documentation](https://docs.blender.org/manual/en/5.2/render/shader_nodes/displacement/normal_map.html). Reference for tangent-space normal input and its UV/color-space requirements; a source texture's channel meaning still requires inspection.
 - **Tangent Node** — Blender Foundation, Blender 5.2 Manual. [Official documentation](https://docs.blender.org/manual/en/5.2/render/shader_nodes/input/tangent.html). Reference for tangent directions used in anisotropic shading; it is not evidence for a particular game's hair shader.
 - **Light Path Node** — Blender Foundation, Blender 5.2 Manual. [Official documentation](https://docs.blender.org/manual/en/5.2/render/shader_nodes/input/light_path.html). Documents ray-type outputs such as *Is Camera Ray*, relevant to the audited scene's camera/background separation.
+- **Blender Python API: Node and NodeSocket** — Blender Foundation, Blender 5.2 API. [Node](https://docs.blender.org/api/5.2/bpy.types.Node.html) · [NodeSocket](https://docs.blender.org/api/5.2/bpy.types.NodeSocket.html). Primary reference for checking node type, socket type, and link state before automated graph edits.
+- **Blender Python API: removing data** — Blender Foundation, Blender 5.2 API. [Troubleshooting guidance](https://docs.blender.org/api/5.2/info_gotchas_crashes.html). Explains why scripts should not access removed RNA data; relevant to safe `NodeLink` mutation in the Jinshi follow-up.
 
 ## Stylized rendering and face-shading control
 

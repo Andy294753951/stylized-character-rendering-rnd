@@ -1844,3 +1844,13 @@ Pure Toon
 ### Diagnosis → Responsibility → Minimal Intervention → Stress Test → Promotion
 
 这才是应该沉淀进 Skill 的核心。
+
+---
+
+## 附录 A：后续案例补记——Jinshi 与 Shading Responsibility Allocation
+
+本节是**独立于上述米砂工程审计的后续记录**，不追改米砂 `.blend` 的已确认状态。依据是本次提供的 [Jinshi 案例笔记](JINSHI_RESPONSIBILITY_CASE_STUDY.md)；本仓库此次未收到对应 `.blend`、脚本、状态报告或渲染输出进行独立复核。
+
+案例记录中的保护不足使鼻侧、眼窝与面颊过度写实；保护过强或整脸压平又损害了 3/4 空间解释与脸身受光一致性。这在案例层面支持本文的 **Physical Spatial Coherence + Bounded Identity Protection**，但不把某一张图或某个节点提升为普遍因果证明。
+
+新增加的诊断轴是 **Shading Responsibility Allocation**：在找到最早出错层后，继续问每个视觉线索由哪个子系统主要负责，其他子系统是否重复强化同一体积线索。案例将几何法线、局部法线、设计性脸影、PBR 与角色灯光重复塑造鼻、眼窝、面颊的情况称为 **Redundant Volume Encoding**。这扩展了已有的 `Diagnosis → Responsibility → Minimal Intervention → Stress Test → Promotion` 方法，不替换本文核心公式，也不把 Jinshi 的参数当作通用默认值。
